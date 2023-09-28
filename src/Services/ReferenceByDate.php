@@ -16,7 +16,8 @@ class ReferenceByDate{
         $docs = [];
         $month = date('m');
         $year = date('Y');
-        return $this->docs->findLastDocument();
+        $doc = $this->docs->findLastDocument();
+        // if($doc->getId() == )
 
 
     }
