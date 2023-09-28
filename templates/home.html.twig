@@ -1,0 +1,65 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Nouvelle Référence</h6>
+    </div>
+    <div class="card-body">
+		<div class="text-center">
+			<div>
+				<h1>{{ ref }}</h1>
+			</div>
+		</div>
+		{{ form_start(form) }}
+			{{form_widget(form.fullName)}}
+			{{form_widget(form.object)}}
+			<button type="submit" class="btn btn-outline-warning btn-sm">Générer une nouvelle Référence</button>
+		{{ form_end(form) }}
+    </div>
+</div>
+
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+	<div class="card-header py-3">
+		<h6 class="m-0 font-weight-bold text-primary">Table des Références</h6>
+	</div>
+	<div class="card-body">
+		<div class="table-responsive">
+			<table class="table table-bordered table-sm" id="dataTable" width="100%" cellspacing="0">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Référence</th>
+						<th>Date et heure</th>
+						<th>Nom receveur</th>
+					</tr>
+				</thead>
+				<tfoot>
+					<tr>
+						<th>ID</th>
+						<th>Référence</th>
+						<th>Date et heure</th>
+						<th>Nom receveur</th>
+					</tr>
+				</tfoot>
+				<tbody>
+				
+					{% for doc in docs %}						
+						<tr>
+							<td>{{doc.id}}</td>
+							<td>{{doc.ref}}</td>
+							<td>{{doc.createdAt | date('d/m/Y à H:i')}}</td>
+							<td>{{doc.fullName}}</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
+
